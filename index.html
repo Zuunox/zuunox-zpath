@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZÜÜNOX | Z-PATH Rank System</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #d0d0d0;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 30px;
+    }
+    h1 {
+      color: #8effc1;
+      text-shadow: 0 0 10px #8effc1;
+    }
+    .rank {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+    input[type="number"] {
+      padding: 8px;
+      background: #111;
+      border: 1px solid #333;
+      color: #8effc1;
+      font-size: 1em;
+      width: 80px;
+    }
+    button {
+      padding: 8px 15px;
+      background: #8effc1;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>ZÜÜNOX RANKING SYSTEM – Z-PATH</h1>
+  <p>Enter your current Z-score to see your rank:</p>
+  <input type="number" id="scoreInput" min="0" value="0">
+  <button onclick="checkRank()">Check Rank</button>
+  <div class="output" id="rankOutput"></div>
+
+  <script>
+    function checkRank() {
+      const score = parseInt(document.getElementById("scoreInput").value);
+      let rank = "";
+      let badge = "";
+
+      if (score >= 600) {
+        rank = "Ascendant – Гэгээнтэн хакер";
+        badge = "☸️";
+      } else if (score >= 300) {
+        rank = "Seeker – Нууцын тэнгэрчлэгч";
+        badge = "🔮";
+      } else if (score >= 150) {
+        rank = "Scribe – Судрын бичээч";
+        badge = "📜";
+      } else if (score >= 50) {
+        rank = "Initiate – Хуурмагийг харсан нүд";
+        badge = "👁️";
+      } else {
+        rank = "Neophyte – Цоожлогдсон сэтгэл";
+        badge = "🕸️";
+      }
+
+      document.getElementById("rankOutput").innerHTML = `<div class="rank">${badge} ${rank}</div>`;
+    }
+  </script>
+</body>
+</html>
